@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mitify</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
+          integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="css/screen.css">
+</head>
+<body class="container-fluid">
+
+<div class=" row h-100" id="container">
+    <aside class="d-none d-lg-block col-lg-2 h-100" id="sidebar">
+        <div class="d-lg-none" id="sidebar-toggle">
+            <button class="sidebar-toggler theme-lightdark" type="button" data-togle="collapse" data-target="#sidebar"><i class=" fa fa-times-circle"></i></button>
+        </div>
+        <nav>
+            <ul class="list-unstyled">
+
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">Radio</a></li>
+            </ul>
+
+        </nav>
+        <nav>
+            <h1>your Library</h1>
+            <ul class="list-unstyled">
+
+                <li><a href="#">Your daily mix</a></li>
+                <li><a href="#">Recent played</a></li>
+                <li><a href="#">Songs</a></li>
+                <li><a href="#">Albums</a></li>
+                <li><a href="#">Artists</a></li>
+                <li><a href="#">Stations</a></li>
+
+            </ul>
+
+
+        </nav>
+        <nav>
+            <h1>Playlists</h1>
+            <ul class="list-unstyled">
+            <li><a href="#">Playlist 1</a></li>
+            <li><a href="#">Playlist 2</a></li>
+            <li class="active"><a href="#">Playlist 3</a></li>
+            <li><a href="#">Playlist 4</a></li>
+            <li><a href="#">Playlist 5</a></li>
+            <li><a href="#">Playlist 6</a></li>
+                </ul>
+
+        </nav>
+
+    </aside>
+    <main class=" col-lg-10 h-100">
+        <header class="row shadow">
+            <div class="col-1 d-lg-none">
+                <button class="sidebar-toggler theme-lightdark" type="button" data-togle="collapse" data-target="#sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="d-none d-sm-block col-sm-6">
+                <a href="#"><i class="fas fa-chevron-left"></i></a>
+                <a href="#"><i class="fas fa-chevron-right"></i></a>
+                <input type="text" name="zoek" id="zoek">
+
+
+            </div>
+            <div class="col-11 col-lg-6 text-right">
+                <img src="images/playlist/person.png" alt="gebruiker">
+                <span>vnaam Fnaam</span>
+                <span>
+                    <a href="#"><i class="fas fa-chevron-down"></i></a>
+                </span>
+                
+                
+                
+            </div>
+        </header>
+        <section class="row " id="content">
+            <header class="col-12">
+<div class="row">
+    <div class=" d-none  d-lg-block  col-lg-1 col-2" id="content_cover">
+        <img src="images/playlist/placeholder.png" alt="cover" class="img-fluid">
+    </div>
+    <div class="col-6 col-lg-5 content_info">
+<div class="type">Playlist</div>
+        <h1>Omschrijving</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto blanditiis eius impedit incidunt perferendis provident quas repudiandae! At aut fuga impedit inventore iste laudantium officiis repellendus sint tempora voluptates? Incidunt!</p>
+
+        <p>Created by <spam class="author">mitify </spam> <i class="fas fa-circle"></i> xx songs, x h xx min</p>
+
+
+    </div>
+    <div class="col-sm-6 actions content_actions text-sm-left text-md-right">
+        <a href="#" class="btn solid" role="button">Play</a>
+        <a href="#" class="btn follow" role="button">Following</a>
+        <a href="#" class="btn circle" role="button">...</a>
+
+
+
+    </div>
+    <div class="col-6 followers text-right">
+        Followers <br> x.xxx.xxx
+    </div>
+
+</div>
+            </header>
+            <div class="col-12 scrolledsmall">
+
+                <div class="row ">
+                    <div class="d-none col-1 content_cover">
+                        img src="images/placeholder.png" class="img-fluid">
+                    </div>
+                    <div class="col-6 content_info">
+                        <h1>Omschrijving </h1>
+                    </div>
+
+                    <div class="col-5 actions content_actions text-right">
+                        <a class="btn" href="#" role="button">Play</a>
+                        <a class="btn" href="#" role="button">Following</a>
+                        <a class="btn" href="#" role="button"><i class="fas fa-ellipsis-h"></i></a>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <section class="col-12" id="bevat">
+<div class="row catalogus">
+
+    <article class="col-sm-6 col-md-4 col-lg-3">
+        <header>
+            <img src="images/playlist/placeholder.png" class="img-fluid">
+
+            <div class="overlay">
+                <div class="ctrl">
+                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-play"></i>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+
+
+        </header>
+
+        <div class="infocard">
+            <h1>item 1</h1>
+            <section>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aperiam
+                architecto aspernatur corporis debitis,
+            </section>
+            <footer>
+                1231231 followers
+            </footer>
+        </div>
+    </article>
+    <article class="col-sm-6 col-md-4 col-lg-3">
+        <header>
+            <img src="images/playlist/placeholder.png" class="img-fluid">
+
+            <div class="overlay">
+                <div class="ctrl">
+                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-play"></i>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+
+
+        </header>
+
+        <div class="infocard">
+            <h1>item 1</h1>
+            <section>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aperiam
+                architecto aspernatur corporis debitis,
+            </section>
+            <footer>
+                1231231 followers
+            </footer>
+        </div>
+    </article>
+    <article class="col-sm-6 col-md-4 col-lg-3">
+        <header>
+            <img src="images/playlist/placeholder.png" class="img-fluid">
+            <div class="overlay">
+                <div class="ctrl">
+                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-play"></i>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="infocard">
+            <h1>item 1</h1>
+            <section>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aperiam
+                architecto aspernatur corporis debitis,
+            </section>
+            <footer>
+                1231231 followers
+            </footer>
+        </div>
+    </article>
+    <article class="col-sm-6 col-md-4 col-lg-3">
+        <header>
+            <img src="images/playlist/placeholder.png" class="img-fluid">
+            <div class="overlay">
+                <div class="ctrl">
+                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-play"></i>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="infocard">
+            <h1>item 1</h1>
+            <section>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aperiam
+                architecto aspernatur corporis debitis,
+            </section>
+            <footer>
+                1231231 followers
+            </footer>
+        </div>
+    </article>
+    <article class="col-sm-6 col-md-4 col-lg-3">
+        <header>
+            <img src="images/playlist/placeholder.png" class="img-fluid">
+            <div class="overlay">
+                <div class="ctrl">
+                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-play"></i>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="infocard">
+            <h1>item 1</h1>
+            <section>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aperiam
+                architecto aspernatur corporis debitis,
+            </section>
+            <footer>
+                1231231 followers
+            </footer>
+        </div>
+    </article>
+    <article class="col-sm-6 col-md-4 col-lg-3">
+        <header>
+            <img src="images/playlist/placeholder.png" class="img-fluid">
+            <div class="overlay">
+                <div class="ctrl">
+                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-play"></i>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="infocard">
+            <h1>item 1</h1>
+            <section>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aperiam
+                architecto aspernatur corporis debitis,
+            </section>
+            <footer>
+                1231231 followers
+            </footer>
+        </div>
+    </article>
+    <article class="col-sm-6 col-md-4 col-lg-3">
+        <header>
+            <img src="images/playlist/placeholder.png" class="img-fluid">
+            <div class="overlay">
+                <div class="ctrl">
+                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-play"></i>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="infocard">
+            <h1>item 1</h1>
+            <section>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aperiam
+                architecto aspernatur corporis debitis,
+            </section>
+            <footer>
+                1231231 followers
+            </footer>
+        </div>
+    </article>
+    <article class="col-sm-6 col-md-4 col-lg-3">
+        <header>
+            <img src="images/playlist/placeholder.png" class="img-fluid">
+            <div class="overlay">
+                <div class="ctrl">
+                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-play"></i>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="infocard">
+            <h1>item 1</h1>
+            <section>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aperiam
+                architecto aspernatur corporis debitis,
+            </section>
+            <footer>
+                1231231 followers
+            </footer>
+        </div>
+    </article>
+
+
+
+</div>
+            </section>
+        </section>
+
+
+    </main>
+</div>
+
+<footer class="row fixed-bottom ">
+    <section class="col-md-6 col-lg-3" id="now_playing">
+        <div class="row no-gutters">
+            <div class="col-md-6 col-lg-3 album_playing">
+                <img src="images/playlist/placeholder.png" class="img-fluid">
+                <div class="album_open_btn">
+                    <i class="fas fa-chevron-up albumup" id=""></i>
+                </div>
+            </div>
+            <div classm-auto">
+                <section class="infoplaying">
+                    <div class="songtitle">
+                        <a href="#">Title</a>
+                        <a href="#"><i class="fas fa-plus"></i></a>
+                    </div>
+                    <div class="artiest">
+                        <a href="#">artiest</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+    <section class="col-md-6 col-lg-6 m-auto" id="now_ctrl">
+        <div class="text-center">
+            <i class="fas fa-random"></i>
+            <i class="fas fa-step-backward"></i>
+            <i class="fa-2x far fa-play-circle"></i>
+            <i class="fas fa-step-forward"></i>
+            <i class="fas fa-redo-alt"></i>
+        </div>
+
+        <div class="row">
+            <div class="col-3 text-center">x:xx</div>
+            <div class="col-6 m-auto">
+                <div class="playbar">
+                    <div class="currentposbar"></div>
+                    <div class="currentpos"></div>
+                </div>
+            </div>
+            <div class="col-3 text-center">x:xx</div>
+        </div>
+    </section>
+    <section class="d-none d-lg-block col-md-6 col-lg-3 m-auto" id="now_remote">
+        <div class="row">
+            <div class="col-3 text-center">
+                <i class="fas fa-list-ul"></i>
+                <i class="fas fa-desktop"></i>
+                <i class="fas fa-volume-up"></i></div>
+            <div class="col-6 m-auto">
+                <div class="playbar">
+                    <div class="currentposbar"></div>
+                    <div class="currentpos"></div>
+                </div>
+            </div>
+            <div class="col-3 text-center">
+                <i class="fas fa-expand"></i>
+            </div>
+        </div>
+    </section>
+</footer>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="scripts/checkscroll.js?blablabla"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+</body>
+</html>
