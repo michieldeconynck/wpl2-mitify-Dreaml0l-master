@@ -1,54 +1,35 @@
 <?php
-    require_once ("scripts/database.php");
-    require_once ("scripts/helpfunctie.php");
+require_once("scripts/database.php");
+require_once("scripts/helpfunctie.php");
 
-    $sqlLijstPlayst ="SELECT playlistid, titel
+$sqlLijstPlayst = "SELECT playlistid, titel
 FROM savedplaylist s INNER JOIN playlist p ON s.playlistid = p.idplaylist";
 
 
-    $sqlHeader = "SELECT titel, omschrijving, afbeelding, createdby, (SELECT sum( duur)
-FROM song s INNER JOIN songsopplayist sp ON s.idsongs = sp.idsong
-WHERE idplaylist = ?) as duur
-FROM playlist
-WHERE idplaylist = ?";
-
-    $sqlInhoud = "SELECT title, duur, naam, cdtitel, sp.toegevoegd, s.idsongs
-FROM songsopplayist sp INNER JOIN song s ON sp.idsong = s.idsongs INNER JOIN artiest a ON s.artistid = a.idartiest INNER JOIN songopcd soc ON s.idsongs = soc.songid INNER JOIN cd cd ON soc.cdid = cd.idcd
-WHERE idplaylist = ?";
+$sqlInhoud = "SELECT idplaylist, titel, omschrijving, afbeelding, createdby
+FROM playlist";
 
 
-    //voor NAV
-    if(!$resNAVPlayst = $mysqli->query($sqlLijstPlayst)) {
+//voor NAV
+if (!$resNAVPlayst = $mysqli->query($sqlLijstPlayst)) {
     echo "oeps, foutje op db";
-    print("<p>Error: " . $mysqli->error."</p>");
+    print("<p>Error: " . $mysqli->error . "</p>");
     exit();
-    }
-    if(isset($_GET["idplaylist"])){
-            $gekozenID = $_GET["idplaylist"];
-    }else{
-        $gekozenID = -1;
-    }
+}
+if (isset($_GET["idplaylist"])) {
+    $gekozenID = $_GET["idplaylist"];
+} else {
+    $gekozenID = -1;
+}
 
-
-    //voor header
-    $stmtHeader = $mysqli->prepare($sqlHeader);
-    $stmtHeader->bind_param("ii",$par1,$par2);
-    $par1 = $gekozenID;
-    $par2 = $gekozenID;
-    $stmtHeader->execute();
-    $resultHeader = $stmtHeader->get_result();
-    //we hebben geen lus nodig, het is voldoende om de eerste lijn in te lezen
-    $rowHeader = $resultHeader->fetch_assoc(); //row 1
-
-
-    //Voor inhoud
-    $stmtInhoud = $mysqli->prepare($sqlInhoud);
-    $stmtInhoud->bind_param("i",$par3);
-    $par3 = $gekozenID;
-    $stmtInhoud->execute();
-    $resultInhoud = $stmtInhoud->get_result();
-    //Omdat we nu verschillende rijen terugkrijgen nog geen fetch, maar een lus starten
-    ?>
+//Voor inhoud
+$stmtInhoud = $mysqli->prepare($sqlInhoud);
+//$stmtInhoud->bind_param("i", $par3);
+//$par3 = $gekozenID;
+$stmtInhoud->execute();
+$resultInhoud = $stmtInhoud->get_result();
+//Omdat we nu verschillende rijen terugkrijgen nog geen fetch, maar een lus starten
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -105,13 +86,13 @@ WHERE idplaylist = ?";
                 <li><a href="#">Playlist 6</a></li>
             </ul>-->
             <?php
-            while($row = $resNAVPlayst->fetch_assoc()) {
+            while ($row = $resNAVPlayst->fetch_assoc()) {
                 $tempID = $row["playlistid"]; //rijen uit sql
                 $tempTitel = $row["titel"]; //rijen uit sql
-                if($tempID == $gekozenID){
-                    print(' <li class="active"><a href="playlist.php?idplaylist=' . $tempID.'">' . $tempTitel .'</a></li>');
-                }else{
-                    print(' <li><a href="playlist.php?idplaylist=' . $tempID.'">' . $tempTitel .'</a></li>');
+                if ($tempID == $gekozenID) {
+                    print(' <li class="active"><a href="playlist.php?idplaylist=' . $tempID . '">' . $tempTitel . '</a></li>');
+                } else {
+                    print(' <li><a href="playlist.php?idplaylist=' . $tempID . '">' . $tempTitel . '</a></li>');
                 }
 
             }
@@ -136,47 +117,26 @@ WHERE idplaylist = ?";
                 </span>
 
 
-
             </div>
         </header>
         <section class="row " id="content">
             <header class="col-12">
                 <div class="row">
                     <div class="d-none col-md-3 col-lg-2 d-md-block" id="content_cover">
-                        <img src="images/playlist/<?php  print ($rowHeader["afbeelding"])?>" alt="cover" class="img-fluid">
+
                     </div>
                     <div class="col-md-9 col-lg-10">
-                        <div class="type">Playlist</div>
-                        <h1><?php print($rowHeader["titel"])  ?></h1>
-                        <p><?php print($rowHeader["omschrijving"])  ?></p>
-
-                        <p>Created by<span class="author"><?php print($rowHeader["createdby"])  ?>
-                            </span>
-                            <i class="fas fa-circle"></i>
-                            xx songs, <?php print(sec_naar_tijd( $rowHeader["duur"]))  ?></p>
-
+                        <div class="type">Saved Songs</div>
 
                     </div>
                     <div class="col-sm-6 actions">
                         <a href="#" class="btn solid" role="button">Play</a>
-                        <a href="#" class="btn follow" role="button">Following</a>
-                        <a href="#" class="btn circle" role="button">...</a>
-
 
 
                     </div>
                     <div class="col-sm-6 followers text-right">
-                        Followers <br> x.xxx.xxx
-
-
-
 
                     </div>
-
-
-
-
-
 
                 </div>
             </header>
@@ -184,16 +144,15 @@ WHERE idplaylist = ?";
 
                 <div class="row ">
                     <div class="d-none col-1 content_cover">
-                        img src="images/placeholder.png" class="img-fluid">
+
                     </div>
                     <div class="col-6 content_info">
-                        <h1>Omschrijving </h1>
+                        <h1>Saved Songs </h1>
                     </div>
 
                     <div class="col-5 actions content_actions text-right">
                         <a class="btn" href="#" role="button">Play</a>
-                        <a class="btn" href="#" role="button">Following</a>
-                        <a class="btn" href="#" role="button"><i class="fas fa-ellipsis-h"></i></a>
+
                     </div>
 
                 </div>
@@ -201,47 +160,38 @@ WHERE idplaylist = ?";
 
             </div>
             <section class="col-12" id="bevat">
-                <div class="row tabelview">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th>title</th>
-                            <th>artist</th>
-                            <th>album</th>
-                            <th><i class="far fa-calendar"></i></th>
-                            <th></th>
-                            <th><i class="far fa-clock"></i></th>
-                        </tr>
+                <div class="row catalogus">
 
-                        </thead>
-                        <tbody>
-                        <?php
-                        while($row = $resultInhoud -> fetch_assoc()){
-                            print('<tr>');
-                            print('<td class="play_status"><i class="fas fa-volume-up"></i> <i class="far fa-play-circle"></i><i class="far fa-pause-circle"></i></td>');
-                            print('<td><a href="songs_save.php?idsong=' . $row["idsongs"] . '"><i class="fas fa-plus"></i></a></td>');
-                            print('<td>' . $row["title"] . '</td>');
-                            print('<td>' . $row["naam"] . '</td>');
-                            print('<td>' . $row["cdtitel"] . '</td>');
-                            print('<td>' . $row["toegevoegd"] . '</td>');
-                            print('<td><i class="fas fa-ellipsis-h"></i></td>');
-                            print('<td>' . sec_naar_tijd($row["duur"]) . '</td>');
-                            print('</tr>');
-                        }
-                        ?>
+                    <?php
+                    while ($row = $resultInhoud->fetch_assoc()){
+                        $tempTitel = $row["titel"];
+                        $tempOmschrijving = $row["omschrijving"];
+                        $tempAfbeelding = $row["afbeelding"];
+                        $tempID = $row["idplaylist"];
 
-
-
-                        </tbody>
-                    </table>
-
-
-
-
-
-
+                        print('<article class="col-sm-6 col-md-4 col-lg-3">');
+                        print('<header>');
+                        print('<img src="images/playlist/'. $tempAfbeelding .'" class="img-fluid">');
+                        print('<div class="overlay">');
+                        print('<div class="ctrl">');
+                        print('<i class="fas fa-plus"></i>
+                                    <i class="fas fa-play"></i>
+                                    <i class="fas fa-ellipsis-h"></i>');
+                        print('</div>');
+                        print('</div>');
+                        print('</header>');
+                        print('<div class="infocard">');
+                        print('<h1>' . $tempTitel . '</h1>');
+                        print('<section>
+                               '  . $tempOmschrijving .  '
+                               </section>');
+                        print(' <footer>
+                                1231231 followers
+                            </footer>');
+                        print('</div>');
+                        print('</article>');
+                    }
+                    ?>
                 </div>
             </section>
         </section>
@@ -310,7 +260,6 @@ WHERE idplaylist = ?";
         </div>
     </section>
 </footer>
-
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
